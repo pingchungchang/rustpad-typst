@@ -10,6 +10,9 @@ while true; do
 	declare -A new_watched
 
 	while read -r id; do
+		if [[ "$id" = "" ]]; then
+			continue
+		fi
 		filepath="/typstfiles/$id.typ"
 		echo "running $id, filepath = $filepath"
 		sqlite3 -cmd ".timeout 5000" /sqldata/db.sqlite <<< "select text from document where id = '$id';" > "$filepath"

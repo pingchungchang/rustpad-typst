@@ -6,8 +6,9 @@ COPY --from=rustpad dist rustpad/dist
 COPY --from=rustpad rustpad-server rustpad/rustpad-server
 RUN yes | pacman -Syu
 RUN yes | pacman -S nginx typst vim sqlite3
-RUN mv nginx.conf /etc/nginx/nginx.conf.bak && \
+RUN mv nginx.conf /etc/nginx/nginx.conf && \
 	mv *.html /usr/share/nginx/html/ && \
 	mkdir -p /pdf && \
-	mv *.pdf /pdf
-CMD [ "rustpad/rustpad-server & bash typst_watcher.sh" ]
+	mv *.pdf /pdf && \
+	mkdir /sqldata/
+CMD  nginx & rustpad/rustpad-server & bash /typst_watcher.sh

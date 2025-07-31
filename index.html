@@ -142,17 +142,17 @@ body {
 						var canvas = document.getElementById(canvas_id)
 						if (canvas == null) {
 							canvas = document.createElement('canvas');
+							canvas.id = canvas_id; // 給予唯一的 ID
+							// 新增 Tailwind CSS 邊距和左右 padding，以在視覺上與容器邊緣保持間距
+							canvas.className = 'my-4 px-5';
+							pdfPagesContainer.appendChild(canvas); // 將 canvas 加入容器中
+							// 設定 canvas 尺寸以符合視口
+							canvas.height = viewport.height;
+							canvas.width = viewport.width;
+
+
 						}
-						canvas.id = canvas_id; // 給予唯一的 ID
-						// 新增 Tailwind CSS 邊距和左右 padding，以在視覺上與容器邊緣保持間距
-						canvas.className = 'my-4 px-5';
-						pdfPagesContainer.appendChild(canvas); // 將 canvas 加入容器中
-
 						const context = canvas.getContext('2d');
-
-						// 設定 canvas 尺寸以符合視口
-						canvas.height = viewport.height;
-						canvas.width = viewport.width;
 
 						// 將頁面渲染到 canvas 上
 						const renderContext = {
