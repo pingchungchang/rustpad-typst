@@ -1,0 +1,3 @@
+- a rustpad with typst (i don't know how to add typst language QQ)
+- usage: just run ./run.sh, and it will open the rustpad on port 3939, and the document reader at port 3940
+- for the document assume the rustpad is 2.2.2.2:3939/#abc, then the document is at 2.2.2.2:3940/#abc, and the raw pdf file is at 2.2.2.2:3940/pdf/abc.pdf
